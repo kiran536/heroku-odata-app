@@ -1,4 +1,4 @@
-package main.java.com.auphelia.services;
+package main.java.edu.earch.services.odata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import main.java.edu.earch.models.SimpleElement;
+import main.java.edu.earch.models.SimpleObject;
+import main.java.edu.earch.models.SimpleRequest;
 
 import org.core4j.Enumerable;
 import org.odata4j.consumer.ODataConsumer;

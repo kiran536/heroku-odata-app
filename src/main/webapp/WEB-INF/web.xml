@@ -14,7 +14,7 @@
       <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
       <init-param>
           <param-name>com.sun.jersey.config.property.packages</param-name>
-          <param-value>main.java.com.auphelia.services</param-value>
+          <param-value>main.java.edu.earch.services</param-value>
       </init-param>
       <init-param>
           <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -26,31 +26,65 @@
     <servlet-name>jersey-services</servlet-name>
     <url-pattern>/app/*</url-pattern>
   </servlet-mapping>
-  <!-- Définition du filtre -->
   
 	<filter>
 	  <filter-name>CORS</filter-name>
 	  <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
-	  <!-- Domaines autorisés, séparés par des virgules, par ex. : <param-value>http://perdu.com http://something.com</param-value> -->
+	  <init-param>
+			<param-name>cors.allowGenericHttpRequests</param-name>
+			<param-value>true</param-value>
+	  </init-param>
 	  <init-param>
 	    <param-name>cors.allowOrigin</param-name>
 	    <param-value>*</param-value>
 	  </init-param>
-	  <!-- Méthodes HTTP autorisées, configurées ici pour REST -->
-	  <init-param>
+	  <!--init-param>
 	    <param-name>cors.supportedMethods</param-name>
-	    <param-value>GET, POST, HEAD, PUT, DELETE</param-value>
-	  </init-param>
+	    <param-value>OPTIONS, GET, POST, HEAD, PUT, DELETE</param-value>
+	  </init-param-->
+	  <init-param>
+			<param-name>cors.allowSubdomains</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportedMethods</param-name>
+			<param-value>GET, HEAD, POST, OPTIONS</param-value>
+		</init-param>
+		
+		<!--init-param>
+			<param-name>cors.supportedHeaders</param-name>
+			<param-value>*</param-value>
+		</init-param-->
+		
+		<init-param>
+			<param-name>cors.exposedHeaders</param-name>
+			<param-value>X-Test-1, X-Test-2</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.supportsCredentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>cors.maxAge</param-name>
+			<param-value>3600</param-value>
+		</init-param>
 	</filter>
-	<!-- Associe le filtre CORS au servlet JAXServlet -->
-	<filter-mapping>
+	<!--filter-mapping>
 	  <filter-name>CORS</filter-name>
 	  <servlet-name>JAXServlet</servlet-name>
-	</filter-mapping>
-	<!-- Associes le filtre CORS aux URLs spécifiées, cet URL étant géré par le servlet -->
+	</filter-mapping-->
 	<filter-mapping>
 	  <filter-name>CORS</filter-name>
 	  <url-pattern>/app/*</url-pattern>
 	</filter-mapping>
+	
+	<session-config>
+        <session-timeout>
+            3600
+        </session-timeout>
+    </session-config>
 
 </web-app>

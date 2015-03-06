@@ -1,4 +1,4 @@
-package com.example;
+package main.java.edu.earch.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -10,7 +10,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
  * launching should fire this main method.
  *
  */
-public class Main {
+public class ServerInvoker {
 
     /**
      * @param args

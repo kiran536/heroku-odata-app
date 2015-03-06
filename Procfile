@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* com.example.Main -javaagent:target/dependency/newrelic/newrelic.jar
+web: java -cp target/classes:target/dependency/* main.java.edu.earch.server.ServerInvoker -javaagent:target/dependency/newrelic/newrelic.jar

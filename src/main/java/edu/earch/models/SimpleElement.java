@@ -1,4 +1,4 @@
-package main.java.com.auphelia.services;
+package main.java.edu.earch.models;
 
 public class SimpleElement {
 	
