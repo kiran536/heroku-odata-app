@@ -332,3 +332,12 @@ a.small {
   overflow: hidden;
 }
 
+.dummy {
+    margin-top: 100%;
+}
+.thumbnail {
+    text-align:center;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+}

@@ -3,6 +3,7 @@ package main.java.edu.earch.services.odata;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -85,6 +86,24 @@ public class GenericOdataServices {
 			}
 			lstToReturn.add(lstObject);
 		}
+		return Response.ok(new Gson().toJson(lstToReturn)).
+				header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS").header("Allow","OPTIONS").build();
+	}
+	
+	@GET
+	@Path("/catalog")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCatalog() {
+		List<SimpleElement> lstToReturn = new ArrayList<SimpleElement>();
+		lstToReturn.add(new SimpleElement("North Wind","http://services.odata.org/Northwind/Northwind.svc/"));
+		lstToReturn.add(new SimpleElement("OData Test Service","http://services.odata.org/OData/OData.svc/"));
+		lstToReturn.add(new SimpleElement("Nuget","http://packages.nuget.org/v1/FeedService.svc/"));
+		lstToReturn.add(new SimpleElement("Ineta","http://live.ineta.org/InetaLiveService.svc/"));
+		lstToReturn.add(new SimpleElement("Nerd Dinner","http://www.nerddinner.com/Services/OData.svc/"));
+		lstToReturn.add(new SimpleElement("Cambridge weather","http://odata.pyslet.org/weather/"));
+		lstToReturn.add(new SimpleElement("Socttsdale Arizona", "http://data.scottsdaleaz.gov/Finance/BusinessLicenses.svc/"));
+		
 		return Response.ok(new Gson().toJson(lstToReturn)).
 				header("Access-Control-Allow-Origin", "*")
 				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS").header("Allow","OPTIONS").build();

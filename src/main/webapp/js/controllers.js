@@ -7,41 +7,42 @@ odataControllers.config(['$httpProvider', function($httpProvider) {
 ]);
 
 odataControllers.factory('Data', function () {
-    return { url: 'http://services.odata.org/Northwind/Northwind.svc/' };
+    return { url: 'http://services.odata.org/Northwind/Northwind.svc/',category:'' };
 });
 
-odataControllers.controller('LevelOneController', ['$scope', '$http','Data',function($scope, $http,Data) {
-  $scope.product = {};
+odataControllers.controller('LevelOneController', ['$scope', '$http','$location','Data',function($scope, $http,$location,Data) {
   $scope.Data=Data;
-  alert('Using url:'+Data.url);
   $http.post('/app/odata/getFirstLevelEntities',Data.url).success(function(data) {
-    $scope.products = data;
+    $scope.levelOneEntities = data;
   });
+  $scope.openLevelTwo=function(category){
+  	$scope.Data.category=category;
+  	$location.path('/odata/leveltwo');
+  }
 }]);
 
-odataControllers.controller('LevelTwoController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
-  $http.post('/app/odata/getSecondLevelEntities').success(function(data) {
-    $scope.products = data;
-    $scope.whichItem = $routeParams.itemId;
-
-    if ($routeParams.itemId > 0) {
-      $scope.prevItem = Number($routeParams.itemId)-1;
-    } else {
-      $scope.prevItem = $scope.products.length-1;
-    }
-
-    if ($routeParams.itemId < $scope.products.length-1) {
-      $scope.nextItem = Number($routeParams.itemId)+1;
-    } else {
-      $scope.nextItem = 0;
-    }
-
+odataControllers.controller('LevelTwoController', ['$scope', '$http','$routeParams','Data', function($scope, $http, $routeParams,Data) {
+  $scope.Data = Data;
+  $scope.objToPost = {};
+  $scope.objToPost.endPoint = Data.url;
+  $scope.objToPost.category = Data.category;
+  
+  $http.post('/app/odata/getSecondLevelEntities', $scope.objToPost).success(function(data) {
+   		$scope.levelTwoEntities = data;
   });
 }]);
 
 odataControllers.controller('HomeController',['$scope','$http','$location','Data',function($scope, $http,$location,Data) {
 	$scope.Data=Data;
 	$scope.label='URL of the oData Service';
+	$scope.catalog={};
+	$http.get('/app/odata/catalog').success(function(data) {
+		$scope.catalog = data;
+	});
+    $scope.openService=function(input){
+      $scope.Data.url = input;
+      $location.path('/odata/levelone');
+    }
 }]);
 
 

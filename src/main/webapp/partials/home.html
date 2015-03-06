@@ -1,7 +1,18 @@
 <section class="artistinfo">
   <div class="artist cf">
   	 <label>{{label}}</label> 
-  	 <input type="text" id="Name" name="Name" ng-model="Data.url" placeholder="URL"> </input><br/>
+  	 <input type="text" id="Name" name="Name" class="form-control" ng-model="Data.url" placeholder="URL" > </input><br/>
      <a class="btn btn-left" href="#/odata/levelone">Submit</a>
+     
+     <br/>
+     <br/>
+     
+     <div class="col-sm-12">
+	     <div ng-repeat="item in catalog" class="col-sm-3 col-xs-4">
+	  		<div >
+	        	<a class="thumbnail" ng-click="openService(item.href)">{{item.title}}</a>
+	  		</div>
+	  	</div>
+	</div>
   </div>
-</section>
+</sectio

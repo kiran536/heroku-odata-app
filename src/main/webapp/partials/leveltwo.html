@@ -1,6 +1,19 @@
 <section class="artistinfo">
-  <div class="artist cf" ng-model="products">
+  <div class="artist cf">
+
+  	<table>
+  		<tr>
+  			<td ng-repeat="y in levelTwoEntities[0]">
+					{{y.name}}
+  			</td>
+ 		 </tr>
+  		<tr ng-repeat="x in levelTwoEntities">
+  			<td ng-repeat="y in x">
+					{{y.value}}
+  			</td>
+ 		 </tr>
+	</table>
   
   </div>
-  <a href="#/odata/level">&laquo; Back to Previous Level</a>
+  <a href="#/odata/levelone">&laquo; Back to Previous Level</a>
 </section>

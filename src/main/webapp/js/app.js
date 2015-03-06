@@ -10,7 +10,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/levelone.html',
     controller: 'LevelOneController'
   }).
-  when('/odata/level2', {
+  when('/odata/leveltwo', {
     templateUrl: 'partials/leveltwo.html',
     controller: 'LevelTwoController'
   }).

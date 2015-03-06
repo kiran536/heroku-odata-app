@@ -1,10 +1,10 @@
 <section class="artistpage">
   <div class="search">
-    <h1>Product Directory</h1>
+    <h1>Contents</h1>
   </div>
   <ul class="artistlist">
-    <li ng-animate="'animate'" class="artist cf" ng-repeat="item in products">
-      <a href="#/product/details/{{products.indexOf(item)}}">
+    <li ng-animate="'animate'" class="artist cf" ng-repeat="item in levelOneEntities">
+      <a ng-click="openLevelTwo(item.href)">
         <div class="info">
           <h2>Title: {{item.title}}</h2>
           <h3>Href: {{item.href}}</h3>
@@ -13,4 +13,5 @@
     </li>
   </ul> 
  
+ <a href="#/home">&laquo; Back to Home page</a>
 </section>
