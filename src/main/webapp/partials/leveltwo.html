@@ -1,19 +1,28 @@
-<section class="artistinfo">
-  <div class="artist cf">
-
-  	<table>
-  		<tr>
-  			<td ng-repeat="y in levelTwoEntities[0]">
-					{{y.name}}
-  			</td>
- 		 </tr>
+<section class="artistpage">
+  <div>
+  	<table class="table table-bordered table-hover">
+  		<thead>
+	  		<tr>
+	  			<td ng-repeat="y in levelTwoEntities[0]">
+						{{y.name}}
+	  			</td>
+	 		 </tr>
+ 		 </thead>
   		<tr ng-repeat="x in levelTwoEntities">
   			<td ng-repeat="y in x">
-					{{y.value}}
+  				<div ng-if="y.type != 'Edm.Binary'">
+         			{{y.value}}
+       			</div>
+       			<div ng-if="y.type == 'Edm.Binary'">
+         			<img src="data:image/bmp;base64,{{y.value}}" />
+       			</div>
   			</td>
  		 </tr>
 	</table>
+  </div>
   
+  <div ng-model="errorobject">
+  	{{errorobject}}
   </div>
   <a href="#/odata/levelone">&laquo; Back to Previous Level</a>
 </section>

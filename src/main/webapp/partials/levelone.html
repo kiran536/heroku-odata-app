@@ -1,6 +1,6 @@
 <section class="artistpage">
   <div class="search">
-    <h1>Contents</h1>
+    <h1>First Level entities</h1>
   </div>
   <ul class="artistlist">
     <li ng-animate="'animate'" class="artist cf" ng-repeat="item in levelOneEntities">
@@ -12,6 +12,11 @@
       </a>
     </li>
   </ul> 
+  
+  
+  <div ng-model="errorobject">
+  	{{errorobject}}
+  </div>
  
  <a href="#/home">&laquo; Back to Home page</a>
 </section>
