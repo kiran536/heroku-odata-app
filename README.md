@@ -1,14 +1,9 @@
-# JAX-RS Template Application 
+# Heroku Geric OData Explorer
 
-This is a template for a lightweight RESTful API using JAX-RS. The sample code is a call for getting the current time.
+This is codebase for a generic oData explorer
     
-## Running the application locally
+## Accessing the application
 
-First build with:
+https://pacific-wildwood-6376.herokuapp.com/
 
-    $mvn clean install
-
-Then run it with:
-
-    $ java -cp target/classes:target/dependency/* com.example.Main
 
